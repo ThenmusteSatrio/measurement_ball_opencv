@@ -3,9 +3,9 @@ import pandas as pd
 import os
 
 # --- KONFIGURASI ---
-FILE_NAME = "persepuluh"
+FILE_NAME = "persatu"
 NAMA_FILE_CSV = f'hasil_csv/{FILE_NAME}.csv'
-JALUR_VIDEO = "video/persatu.mp4"
+JALUR_VIDEO = f"video/{FILE_NAME}.mp4"
 FOLDER_OUTPUT = f"validasi_frame/{FILE_NAME}"
 JUMLAH_SAMPEL = 15
 
@@ -67,7 +67,7 @@ def validasi_frame_final():
             tinggi = baris_data['Height_cm'].values[0]
 
             # Tambahkan Teks Label di Gambar
-            label = f"F: {current_frame} | H: {tinggi:.2f} cm"
+            label = f"F: {current_frame}"
             cv2.putText(frame, label, (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0), 3)
 
             # Simpan File
