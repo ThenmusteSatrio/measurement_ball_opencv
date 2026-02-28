@@ -33,6 +33,18 @@ def process_falling_data(file_path, target_count=15):
     else:
         subsampled_df = segment
 
+    subsampled_df['t (s)'] = (subsampled_df['Time_ms'] - subsampled_df['Time_ms'].iloc[0]) / 1000.0
+
+    # Waktu Kuadrat / t^2 (s^2)
+    subsampled_df['t^2 (s^2)'] = subsampled_df['t (s)'] ** 2
+
+    # h (cm) -> Jarak jatuh (150 dikurangi posisi sekarang)
+    subsampled_df['h (cm)'] = 150.0 - subsampled_df['Height_cm']
+
+    # 2h (cm) -> Untuk keperluan grafik linearitas 2h terhadap t^2
+    subsampled_df['2h (cm)'] = 2 * subsampled_df['h (cm)']
+    subsampled_df = subsampled_df.round(4)
+
     return subsampled_df
 
 for file in file_list:
