@@ -41,7 +41,13 @@ CUSTOM_SCALES = {
 def get_height_from_y(y_pixel):
     sorted_items = sorted(CUSTOM_SCALES.items(), key=lambda x: x[1])
 
-    if y_pixel <= sorted_items[0][1]: return sorted_items[0][0]
+    if y_pixel < sorted_items[0][1]:
+        cm_1, y_1 = sorted_items[0]  # (150, 155)
+        cm_2, y_2 = sorted_items[1]  # (140, 280)
+
+        pixel_per_cm = (y_2 - y_1) / (cm_1 - cm_2)
+        diff_y = y_1 - y_pixel
+        return cm_1 + (diff_y / pixel_per_cm)
     if y_pixel >= sorted_items[-1][1]: return sorted_items[-1][0]
 
     for i in range(len(sorted_items) - 1):
