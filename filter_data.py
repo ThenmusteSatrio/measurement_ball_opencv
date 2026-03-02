@@ -11,18 +11,18 @@ def process_falling_data(file_path, target_count=15):
 
     df['v_temp'] = -df['Height_cm'].diff()
     mask_moving = df['v_temp'] > 0.5
-    if not mask_moving.any():
-        return None
-
+    if not mask_moving.any(): return None
     start_idx = df[mask_moving].index[0]
 
     h_start = np.floor(df.loc[start_idx, 'Height_cm'])
 
-    mask_floor = df['Height_cm'] < 5
+    mask_floor = df['Height_cm'] < 2.0
     if mask_floor.any():
         end_idx = df[mask_floor].index[0] - 1
     else:
-        end_idx = len(df) - 1
+        end_idx = df['Height_cm'].idxmin()
+
+    if end_idx <= start_idx: end_idx = len(df) - 1
 
     segment = df.loc[start_idx:end_idx].copy()
     segment = segment.drop_duplicates(subset=['Height_cm'], keep='first')

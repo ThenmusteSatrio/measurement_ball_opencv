@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import csv
 
-FILE_NAME = "persatu"
+FILE_NAME = "pertiga"
 VIDEO_PATH = f'video/{FILE_NAME}.mp4'
 FILE_OUTPUT_CSV = f'csv/{FILE_NAME}.csv'
 VIDEO_OUTPUT_PATH = f'output/{FILE_NAME}.mp4'
@@ -19,22 +19,22 @@ PT_0 = (520, 1720)
 
 
 CUSTOM_SCALES = {
-    150: 155,
-    140: 280,
-    130: 405,
-    120: 525,
-    110: 640,
-    100: 750,
-    90: 860,
-    80: 970,
-    70: 1075,
-    60: 1175,
-    50: 1270,
-    40: 1367,
-    30: 1460,
-    20: 1550,
-    10: 1640,
-    0: 1720
+    150: 163,
+    140: 287,
+    130: 413,
+    120: 533,
+    110: 647,
+    100: 757,
+    90: 867,
+    80: 977,
+    70: 1083,
+    60: 1183,
+    50: 1277,
+    40: 1375,
+    30: 1467,
+    20: 1557,
+    10: 1647,
+    0: 1727
 }
 
 
